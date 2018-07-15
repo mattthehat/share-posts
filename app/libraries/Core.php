@@ -20,7 +20,6 @@ class Core {
         $this->currentController = new $this->currentController;
 
         // check for second part of url
-
         if(isset($url[1])){
             // Check to see if method exists in controller
             if(method_exists($this->currentController, $url[1])){
@@ -28,15 +27,10 @@ class Core {
                 unset($url[1]); 
             }
         }
-
         // Get params
-
         $this->params = $url ? array_values($url) : [];
-
         // Call a callback with array of params
-
         call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
-
     }
 
     public function getUrl(){
